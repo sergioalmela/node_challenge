@@ -4,7 +4,8 @@
   "description": "Challenge de API sobre Node.js para cloudAppi",
   "main": "app.js",
   "scripts": {
-    "test": "tests/test.js"
+    "start": "node app.js",
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
