@@ -1,4 +1,5 @@
 //Configuración de la base de datos para el hosting
-const connection_mongo = 'mongodb+srv://sergio:sergio@cluster0.y7hmk.mongodb.net/users?retryWrites=true&w=majority';
+
+const connection_mongo = process.env.NODE_ENV === 'dev' ? process.env.DB_URL : 'mongodb://localhost/users';
 
 module.exports = connection_mongo;
