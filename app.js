@@ -12,11 +12,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const mongo_connection = require("./config/config");
+
 //Conectamos a la base de datos
-const mongoConnectionString = 'mongodb://localhost/users';
-mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
-    .then(db => console.log('Conectado a la base de datos'))
-    .catch(err => console.log(err));
+mongoose.connect(mongo_connection, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
+    .then(
+        () => { console.log('Conectados a la base de datos'); },
+        err => { console.log('Error al conectar con la base de datos'); }
+    );
 
 //Cargamos las rutas
 require("./app/routes/routes")(app);
